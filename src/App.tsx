@@ -564,71 +564,76 @@ const GameScreen = () => {
   return (
     <div className="character-selection">
       <h2>Karakterlerinizi Seçin</h2>
-      <div className="character-grid">
-        <div 
-          className={`character-card ${selectedCharacters.includes('FIRE') ? 'selected' : ''}`}
-          onClick={() => toggleCharacterSelection('FIRE')}
-        >
-          <img src={atesPng} alt="Ateş Karakteri" />
-          <h3>Ateş Karakteri</h3>
-          <p>Ateş güçlerine sahip</p>
-          <div className="nft-info">
-            <p className="nft-address">NFT: {NFT_ADDRESSES.FIRE.substring(0, 6)}...{NFT_ADDRESSES.FIRE.substring(NFT_ADDRESSES.FIRE.length - 4)}</p>
-            <a href={OPENSEA_LINKS.FIRE} target="_blank" rel="noopener noreferrer" className="opensea-link">
-              OpenSea'da Görüntüle
-            </a>
-          </div>
-        </div>
-        <div 
-          className={`character-card ${selectedCharacters.includes('ICE') ? 'selected' : ''}`}
-          onClick={() => toggleCharacterSelection('ICE')}
-        >
-          <img src={suPng} alt="Buz Karakteri" />
-          <h3>Buz Karakteri</h3>
-          <p>Buz güçlerine sahip</p>
-          <div className="nft-info">
-            <p className="nft-address">NFT: {NFT_ADDRESSES.ICE.substring(0, 6)}...{NFT_ADDRESSES.ICE.substring(NFT_ADDRESSES.ICE.length - 4)}</p>
-            <a href={OPENSEA_LINKS.ICE} target="_blank" rel="noopener noreferrer" className="opensea-link">
-              OpenSea'da Görüntüle
-            </a>
-          </div>
-        </div>
-        <div 
-          className={`character-card ${selectedCharacters.includes('DINO') ? 'selected' : ''}`}
-          onClick={() => toggleCharacterSelection('DINO')}
-        >
-          <img src={dinoPng} alt="Dino Karakter" />
-          <h3>Dino Karakter</h3>
-          <p>Hızlı ve çevik destek</p>
-          <div className="nft-info">
-            <p className="nft-address">NFT: {NFT_ADDRESSES.DINO.substring(0, 6)}...{NFT_ADDRESSES.DINO.substring(NFT_ADDRESSES.DINO.length - 4)}</p>
-            <a href={OPENSEA_LINKS.DINO} target="_blank" rel="noopener noreferrer" className="opensea-link">
-              OpenSea'da Görüntüle
-            </a>
-          </div>
-        </div>
-      </div>
       
-      {message && <p className="error-message">{message}</p>}
-      
-      <button 
-        className="battle-btn"
-        onClick={startBattle}
-      >
-        Savaşa Başla
-      </button>
+      <div className="selection-container">
+        <div className="character-grid-container">
+          <div className="character-grid">
+            <div 
+              className={`character-card ${selectedCharacters.includes('FIRE') ? 'selected' : ''}`}
+              onClick={() => toggleCharacterSelection('FIRE')}
+            >
+              <img src={atesPng} alt="Ateş Karakteri" />
+              <h3>Ateş Karakteri</h3>
+              <p>Ateş güçlerine sahip</p>
+              <div className="nft-info">
+                <p className="nft-address">NFT: {NFT_ADDRESSES.FIRE.substring(0, 6)}...{NFT_ADDRESSES.FIRE.substring(NFT_ADDRESSES.FIRE.length - 4)}</p>
+                <a href={OPENSEA_LINKS.FIRE} target="_blank" rel="noopener noreferrer" className="opensea-link">
+                  OpenSea'da Görüntüle
+                </a>
+              </div>
+            </div>
+            <div 
+              className={`character-card ${selectedCharacters.includes('ICE') ? 'selected' : ''}`}
+              onClick={() => toggleCharacterSelection('ICE')}
+            >
+              <img src={suPng} alt="Buz Karakteri" />
+              <h3>Buz Karakteri</h3>
+              <p>Buz güçlerine sahip</p>
+              <div className="nft-info">
+                <p className="nft-address">NFT: {NFT_ADDRESSES.ICE.substring(0, 6)}...{NFT_ADDRESSES.ICE.substring(NFT_ADDRESSES.ICE.length - 4)}</p>
+                <a href={OPENSEA_LINKS.ICE} target="_blank" rel="noopener noreferrer" className="opensea-link">
+                  OpenSea'da Görüntüle
+                </a>
+              </div>
+            </div>
+            <div 
+              className={`character-card ${selectedCharacters.includes('DINO') ? 'selected' : ''}`}
+              onClick={() => toggleCharacterSelection('DINO')}
+            >
+              <img src={dinoPng} alt="Dino Karakter" />
+              <h3>Dino Karakter</h3>
+              <p>Hızlı ve çevik destek</p>
+              <div className="nft-info">
+                <p className="nft-address">NFT: {NFT_ADDRESSES.DINO.substring(0, 6)}...{NFT_ADDRESSES.DINO.substring(NFT_ADDRESSES.DINO.length - 4)}</p>
+                <a href={OPENSEA_LINKS.DINO} target="_blank" rel="noopener noreferrer" className="opensea-link">
+                  OpenSea'da Görüntüle
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          {message && <p className="error-message">{message}</p>}
+          
+          <button 
+            className="battle-btn"
+            onClick={startBattle}
+          >
+            Savaşa Başla
+          </button>
+        </div>
 
-      <div className="enemy-preview">
-        <h3>Düşmanınız:</h3>
-        <div className="enemy-card">
-          <img src={canavarPng} alt="Karanlık Lord" />
-          <h4>{CHARACTERS.ENEMY.name}</h4>
-          <p>{CHARACTERS.ENEMY.description}</p>
-          <div className="nft-info">
-            <p className="nft-address">NFT: {NFT_ADDRESSES.ENEMY.substring(0, 6)}...{NFT_ADDRESSES.ENEMY.substring(NFT_ADDRESSES.ENEMY.length - 4)}</p>
-            <a href={OPENSEA_LINKS.ENEMY} target="_blank" rel="noopener noreferrer" className="opensea-link">
-              OpenSea'da Görüntüle
-            </a>
+        <div className="enemy-preview">
+          <h3>Düşmanınız:</h3>
+          <div className="enemy-card">
+            <img src={canavarPng} alt="Karanlık Lord" />
+            <h4>{CHARACTERS.ENEMY.name}</h4>
+            <p>{CHARACTERS.ENEMY.description}</p>
+            <div className="nft-info">
+              <p className="nft-address">NFT: {NFT_ADDRESSES.ENEMY.substring(0, 6)}...{NFT_ADDRESSES.ENEMY.substring(NFT_ADDRESSES.ENEMY.length - 4)}</p>
+              <a href={OPENSEA_LINKS.ENEMY} target="_blank" rel="noopener noreferrer" className="opensea-link">
+                OpenSea'da Görüntüle
+              </a>
+            </div>
           </div>
         </div>
       </div>
