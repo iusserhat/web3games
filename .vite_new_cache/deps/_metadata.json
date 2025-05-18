@@ -1,0 +1,70 @@
+{
+  "hash": "c1987140",
+  "configHash": "0545a12e",
+  "lockfileHash": "8014e471",
+  "browserHash": "b12c79e5",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "21bcc047",
+      "needsInterop": true
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "fd038f1e",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "248e392d",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "469bc1b7",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "d498cef6",
+      "needsInterop": true
+    },
+    "@web3-react/core": {
+      "src": "../../node_modules/@web3-react/core/dist/index.js",
+      "file": "@web3-react_core.js",
+      "fileHash": "7cfe8197",
+      "needsInterop": true
+    },
+    "ethers": {
+      "src": "../../node_modules/ethers/lib.esm/index.js",
+      "file": "ethers.js",
+      "fileHash": "dea9a864",
+      "needsInterop": false
+    },
+    "@web3-react/injected-connector": {
+      "src": "../../node_modules/@web3-react/injected-connector/dist/injected-connector.esm.js",
+      "file": "@web3-react_injected-connector.js",
+      "fileHash": "2b8de0c5",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YEPI4YLO": {
+      "file": "chunk-YEPI4YLO.js"
+    },
+    "chunk-D2KY6O3O": {
+      "file": "chunk-D2KY6O3O.js"
+    },
+    "chunk-B4BE72TJ": {
+      "file": "chunk-B4BE72TJ.js"
+    },
+    "chunk-V4OQ3NZ2": {
+      "file": "chunk-V4OQ3NZ2.js"
+    }
+  }
+}

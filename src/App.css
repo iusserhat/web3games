@@ -14,18 +14,20 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .app-main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
+  height: calc(100vh - 100px);
+  overflow: hidden;
 }
 
 .error-app {
@@ -35,44 +37,55 @@ body {
 }
 
 .error-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 20px;
-  background-color: rgba(255, 59, 48, 0.05);
-  border-radius: 10px;
-  margin: 40px 0;
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: #2c2c54;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .error-container h2 {
   color: #ff6b6b;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .error-container p {
-  margin-bottom: 30px;
-  max-width: 600px;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
-.error-container button,
-.error-container .action-button {
+.reload-btn {
   background-color: #4a69bd;
   color: white;
-  padding: 10px 20px;
-  font-size: 16px;
   border: none;
+  padding: 0.75rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 10px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-.error-container button:hover,
-.error-container .action-button:hover {
-  background-color: #5c7cfa;
+.reload-btn:hover {
+  background-color: #3c5ba9;
+}
+
+.metamask-link {
+  display: inline-block;
+  background-color: #f3a953;
+  color: #111;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.metamask-link:hover {
+  background-color: #f09c3a;
 }
 
 .loading-screen {
@@ -86,29 +99,30 @@ body {
 }
 
 .app-header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 50px;
+  padding: 10px 0;
+  background-color: rgba(20, 20, 40, 0.9);
+  z-index: 10;
 }
 
 .app-header h1 {
-  font-size: 42px;
+  font-size: 28px;
   color: white;
-  margin-bottom: 10px;
+  margin: 0;
   text-shadow: 0 0 10px rgba(100, 100, 255, 0.5);
 }
 
 .app-header p {
   color: #aaaaff;
-  font-size: 18px;
+  font-size: 14px;
+  margin: 5px 0 0 0;
 }
 
 .app-footer {
-  margin-top: auto;
-  padding-top: 30px;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  height: 50px;
+  padding: 10px 0;
+  background-color: rgba(20, 20, 40, 0.9);
+  z-index: 10;
 }
 
 .instructions-button {
@@ -161,32 +175,31 @@ body {
 }
 
 .opensea-links {
-  margin: 20px 0;
+  margin-top: 20px;
   padding: 15px;
-  background-color: rgba(32, 129, 226, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
-  border: 1px solid rgba(32, 129, 226, 0.3);
 }
 
 .nft-links {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 10px;
 }
 
 .nft-links a {
-  color: #4f9ce0;
+  color: #66bbff;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: 8px 12px;
   border-radius: 4px;
-  background-color: rgba(32, 129, 226, 0.1);
-  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  word-break: break-all;
 }
 
 .nft-links a:hover {
-  background-color: rgba(32, 129, 226, 0.3);
-  color: #ffffff;
+  background-color: rgba(0, 100, 255, 0.3);
 }
 
 .start-button {
@@ -205,89 +218,72 @@ body {
   background: #5c7cfa;
 }
 
-/* Character Selection Screen */
+/* Karakter Seçim Ekranı */
 .character-selection {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  height: 100%;
   padding: 20px;
+  overflow-y: auto;
 }
 
-.character-selection h2 {
-  font-size: 32px;
-  margin-bottom: 30px;
-  color: #aaaaff;
-  text-align: center;
-  text-shadow: 0 0 10px rgba(150, 150, 255, 0.5);
+.battle-scene {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.selection-message {
-  color: #ff6b6b;
-  margin-bottom: 15px;
-  text-align: center;
+.battle-characters {
+  position: relative;
+  width: 100%;
+  height: 70%;
+  z-index: 5;
 }
 
+/* Karakter seçim ekranını iyileştirmeler */
 .characters-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
-  margin-bottom: 30px;
-  width: 100%;
+  gap: 15px;
+  margin: 20px auto;
+  max-width: 900px;
 }
 
 .character-card {
-  width: 230px;
-  background-color: #2a2a4a;
-  border-radius: 12px;
-  padding: 20px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 2px solid transparent;
   position: relative;
+  width: 200px;
+  min-height: 320px;
+  background-color: rgba(30, 30, 60, 0.7);
+  border: 2px solid rgba(100, 100, 255, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .character-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  border-color: rgba(100, 100, 255, 0.6);
+  box-shadow: 0 0 15px rgba(100, 100, 255, 0.3);
 }
 
 .character-card.selected {
-  border-color: #33ff33;
-  background-color: #335533;
-  box-shadow: 0 0 20px rgba(51, 255, 51, 0.4);
-}
-
-/* Düşman kartı için özel stiller */
-.character-card.enemy-card {
-  background-color: #3a2a4a;
-  border: 2px solid #551111;
-  box-shadow: 0 5px 15px rgba(80, 20, 20, 0.4);
-  cursor: default;
-  transform: scale(0.95);
-  opacity: 0.9;
-}
-
-.character-card.enemy-card img {
-  filter: drop-shadow(0 5px 10px rgba(255, 0, 0, 0.2));
-}
-
-.character-card.enemy-card h3 {
-  color: #ff6666;
-}
-
-.char-type.enemy-type {
-  background-color: #aa3333;
-}
-
-.character-card.enemy-card:hover {
-  transform: scale(0.95);
-  box-shadow: 0 5px 15px rgba(80, 20, 20, 0.4);
+  border-color: rgba(100, 255, 100, 0.8);
+  box-shadow: 0 0 20px rgba(100, 255, 100, 0.4);
 }
 
 .character-card img {
@@ -352,21 +348,18 @@ body {
 }
 
 .opensea-link {
-  display: block;
-  color: #4f9ce0;
-  font-size: 14px;
+  display: inline-block;
+  color: #66bbff;
   text-decoration: none;
-  padding: 8px 10px;
+  padding: 5px 8px;
   border-radius: 4px;
-  background-color: rgba(32, 129, 226, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
-  text-align: center;
-  width: 100%;
 }
 
 .opensea-link:hover {
-  background-color: rgba(32, 129, 226, 0.3);
-  color: #ffffff;
+  background-color: rgba(0, 100, 255, 0.3);
+  color: white;
 }
 
 .start-battle-btn {
@@ -379,8 +372,11 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  margin-top: 10px;
+  margin-top: 25px;
   min-width: 250px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .start-battle-btn.enabled:hover {
@@ -450,9 +446,60 @@ body {
   color: #aaaaff;
 }
 
+/* Sağlık çubukları */
+.health-bars {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 20;
+}
+
+.player-health, .enemy-health {
+  width: 45%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Savaş durumu mesajı */
+.battle-status {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+}
+
+.battle-status p {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px 30px;
+  border-radius: 25px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+  animation: fadeIn 0.5s ease;
+  min-width: 60%;
+  max-width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.health-label {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+}
+
 .health-bar {
   width: 100%;
-  height: 22px;
+  height: 25px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   overflow: hidden;
@@ -472,9 +519,9 @@ body {
 }
 
 .health-value {
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 8px;
   text-shadow: 1px 1px 2px #000;
   font-weight: bold;
 }
@@ -488,57 +535,449 @@ body {
   color: #aaaaff;
 }
 
-/* Game Result */
+/* Oyun sonucu ekranı */
 .game-result {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #2a2a4a;
-  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 30;
   text-align: center;
 }
 
+.victory-title, .defeat-title {
+  font-size: 5vw;
+  margin-bottom: 30px;
+  text-shadow: 0 0 20px;
+  letter-spacing: 8px;
+  animation: pulseTitle 2s infinite ease-in-out;
+}
+
+@keyframes pulseTitle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .victory-title {
-  color: #33cc33;
-  font-size: 36px;
-  margin-bottom: 20px;
+  color: #FFEB3B;
+  text-shadow: 0 0 20px #FFC107, 0 0 40px #FFC107;
 }
 
 .defeat-title {
-  color: #ff5555;
-  font-size: 36px;
-  margin-bottom: 20px;
+  color: #FF5252;
+  text-shadow: 0 0 20px #F44336, 0 0 40px #F44336;
 }
 
 .game-result p {
-  font-size: 18px;
+  font-size: 1.5vw;
   margin-bottom: 30px;
+  max-width: 80%;
   line-height: 1.5;
 }
 
-.game-result button {
-  padding: 12px 30px;
-  font-size: 18px;
-  background-color: #4a69bd;
+.play-again-btn {
+  margin-top: 50px;
+  padding: 20px 60px;
+  font-size: 1.2vw;
+  background: linear-gradient(to bottom, #4a69bd, #3f5fb9);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 40px;
   cursor: pointer;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
-.game-result button:hover {
-  background-color: #5c7cfa;
+.play-again-btn:hover {
+  background: linear-gradient(to bottom, #5c7cfa, #5d82f3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
-.battle-scene {
-  position: relative;
+/* Büyü efektleri */
+.magic-effect {
+  position: absolute;
+  top: 40%;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 5;
+  filter: blur(3px) brightness(1.5);
+  transform-origin: center;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+}
+
+/* İyileştirilmiş büyü parçacıkları */
+.magic-particles {
+  position: absolute;
   width: 100%;
-  height: 550px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  height: 100%;
+  transform-origin: center;
+  animation: particlesRotate 0.8s linear infinite;
+}
+
+@keyframes particlesRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.magic-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(1px);
+  animation: magicParticleFloat 0.8s linear infinite alternate;
+}
+
+@keyframes magicParticleFloat {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  100% { transform: translate(-5px, -5px) scale(1.2); opacity: 0.5; }
+}
+
+/* Ateş karakteri için geliştirilmiş büyü efekti */
+.player-character:has(img[src*="ates"]) .magic-effect {
+  background: linear-gradient(to right, #ff3300, #ff9966);
+  box-shadow: 0 0 20px rgba(255, 100, 0, 0.8), 0 0 30px rgba(255, 50, 0, 0.5);
+  animation: fireMagicFly 1.2s cubic-bezier(0, 0.8, 0.8, 1) forwards;
+  width: 35px;
+  height: 35px;
+}
+
+.player-character:has(img[src*="ates"]) .magic-particle {
+  background-color: #ff6633;
+  box-shadow: 0 0 12px #ff3300;
+}
+
+.player-character:has(img[src*="ates"]) .magic-effect::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(circle, rgba(255, 100, 0, 0.8) 0%, rgba(255, 0, 0, 0.1) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: fireGlow 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes fireGlow {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0.3; }
+}
+
+/* Geliştirilmiş Buz karakteri için özel büyü efekti */
+.player-character:has(img[src*="su"]) .magic-effect {
+  background: linear-gradient(to right, #00ccff, #66ffff);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.8), 0 0 30px rgba(0, 150, 255, 0.5);
+  animation: iceMagicFly 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+  width: 35px;
+  height: 35px;
+}
+
+/* Su karakter büyüsü için boyut güncellenmesi */
+.player-character:has(img[src*="su"]) .magic-effect {
+  background: linear-gradient(to right, #00ccff, #66ffff);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.8), 0 0 30px rgba(0, 150, 255, 0.5);
+  animation: iceMagicFly 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+  width: 35px;
+  height: 35px;
+}
+
+.player-character:has(img[src*="su"]) .magic-particle {
+  background-color: #33ccff;
+  box-shadow: 0 0 12px #0099ff;
+}
+
+.player-character:has(img[src*="su"]) .magic-effect::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.8) 0%, rgba(0, 100, 255, 0.1) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: iceGlow 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes iceGlow {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  100% { transform: scale(1.4) rotate(45deg); opacity: 0.3; }
+}
+
+/* Düzeltilmiş ateş büyüsü animasyonu - daha uzağa gidecek şekilde */
+@keyframes fireMagicFly {
+  0% { 
+    transform: translateX(0) scale(1) rotate(0deg); 
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(150px) translateY(-35px) scale(1.5) rotate(90deg);
+    opacity: 0.95;
+  }
+  50% { 
+    transform: translateX(300px) translateY(-50px) scale(2.0) rotate(180deg); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateX(500px) translateY(-25px) scale(2.5) rotate(320deg); 
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateX(650px) translateY(0px) scale(3.0) rotate(360deg); 
+    opacity: 0;
+  }
+}
+
+/* Düzeltilmiş buz büyüsü animasyonu - daha uzağa gidecek şekilde */
+@keyframes iceMagicFly {
+  0% { 
+    transform: translateX(0) scale(1) rotate(0deg); 
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(150px) translateY(-25px) scale(1.5) rotate(-45deg);
+    opacity: 0.95;
+  }
+  50% { 
+    transform: translateX(300px) translateY(-50px) scale(2.0) rotate(-120deg); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateX(500px) translateY(-25px) scale(2.5) rotate(-240deg); 
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateX(650px) translateY(0px) scale(3.0) rotate(-360deg); 
+    opacity: 0;
+  }
+}
+
+/* Düşman büyü efekti */
+.enemy-magic {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  left: 20%;
+  z-index: 8;
+  opacity: 0.9;
+  filter: blur(4px) brightness(1.5);
+}
+
+.enemy-magic.attack-top {
+  animation: enemyMagicFlyTop 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.enemy-magic.attack-bottom {
+  animation: enemyMagicFlyBottom 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Düşman büyü animasyonları */
+@keyframes enemyMagicFlyTop {
+  0% { 
+    transform: translateX(0) scale(1); 
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-150px) translateY(-50px) scale(1.5);
+    opacity: 0.95;
+  }
+  50% { 
+    transform: translateX(-300px) translateY(-100px) scale(2.0); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateX(-450px) translateY(-70px) scale(2.5); 
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateX(-600px) translateY(-50px) scale(3); 
+    opacity: 0;
+  }
+}
+
+@keyframes enemyMagicFlyBottom {
+  0% { 
+    transform: translateX(0) scale(1); 
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-150px) translateY(30px) scale(1.5);
+    opacity: 0.95;
+  }
+  50% { 
+    transform: translateX(-300px) translateY(60px) scale(2.0); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateX(-450px) translateY(40px) scale(2.5); 
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateX(-600px) translateY(20px) scale(3); 
+    opacity: 0;
+  }
+}
+
+/* Düşman büyü parçacıkları */
+.enemy-magic::before,
+.enemy-magic::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: enemyParticle 0.5s ease-out infinite alternate;
+  transform-origin: center;
+}
+
+.enemy-magic::before {
+  top: -30%;
+  left: -20%;
+  background: rgba(186, 104, 200, 0.7);
+  box-shadow: 0 0 15px rgba(186, 104, 200, 0.9);
+}
+
+.enemy-magic::after {
+  bottom: -30%;
+  right: -20%;
+  background: rgba(104, 200, 104, 0.7);
+  box-shadow: 0 0 15px rgba(104, 200, 104, 0.9);
+}
+
+@keyframes enemyParticle {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.3) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+/* Düşman saldırı efekti */
+.enemy-character.attacking {
+  animation: enemyAttack 0.8s ease-in-out;
+}
+
+@keyframes enemyAttack {
+  0% { transform: scale(2) translateX(0) rotate(0deg); filter: brightness(1); }
+  25% { transform: scale(2) translateX(-30px) rotate(-5deg); filter: brightness(1.3); }
+  50% { transform: scale(2) translateX(-15px) rotate(3deg); filter: brightness(1.5); }
+  75% { transform: scale(2) translateX(-5px) rotate(-2deg); filter: brightness(1.2); }
+  100% { transform: scale(2) translateX(0) rotate(0deg); filter: brightness(1); }
+}
+
+/* Düşmana vuruş efekti */
+.enemy-hit {
+  animation: enemyHitEffect 0.4s ease-in-out;
+}
+
+@keyframes enemyHitEffect {
+  0% { transform: scale(2) translateX(0) rotate(0deg); filter: brightness(1); }
+  25% { transform: scale(2.05) translateX(-15px) rotate(-5deg); filter: brightness(1.5) contrast(1.2); }
+  50% { transform: scale(1.95) translateX(10px) rotate(3deg); filter: brightness(1.3) hue-rotate(45deg); }
+  75% { transform: scale(2.02) translateX(-5px) rotate(-2deg); filter: brightness(1.1); }
+  100% { transform: scale(2) translateX(0) rotate(0deg); filter: brightness(1); }
+}
+
+/* Kritik vuruş efekti */
+.critical-hit {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: #ff0000;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ffff00, 0 0 15px #ffffff;
+  animation: criticalAnimation 0.8s ease-out forwards;
+  z-index: 10;
+}
+
+/* Dino filigranı */
+.dino-filigran {
+  position: absolute;
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 15px rgba(102, 204, 0, 0.8));
+  animation: dinoFiligranMove 30s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes dinoFiligranMove {
+  0% {
+    top: 20%;
+    left: 20%;
+    transform: scale(0.8);
+  }
+  10% {
+    top: 15%;
+    left: 35%;
+    transform: scale(0.9);
+  }
+  20% {
+    top: 25%;
+    left: 50%;
+    transform: scale(1);
+  }
+  30% {
+    top: 40%;
+    left: 70%;
+    transform: scale(0.9);
+  }
+  40% {
+    top: 60%;
+    left: 75%;
+    transform: scale(0.8);
+  }
+  50% {
+    top: 70%;
+    left: 60%;
+    transform: scale(0.9);
+  }
+  60% {
+    top: 60%;
+    left: 40%;
+    transform: scale(1);
+  }
+  70% {
+    top: 50%;
+    left: 25%;
+    transform: scale(0.9);
+  }
+  80% {
+    top: 35%;
+    left: 15%;
+    transform: scale(0.8);
+  }
+  90% {
+    top: 25%;
+    left: 10%;
+    transform: scale(0.9);
+  }
+  100% {
+    top: 20%;
+    left: 20%;
+    transform: scale(0.8);
+  }
 }
 
 /* Savaş ortamı (gökyüzü arka planı) */
@@ -550,40 +989,22 @@ body {
   height: 100%;
   background: linear-gradient(to bottom, #0b1633 0%, #213e6d 60%, #2a5298 100%);
   overflow: hidden;
+  z-index: 1;
 }
 
 .moon {
   position: absolute;
-  top: 50px;
-  right: 80px;
-  width: 80px;
-  height: 80px;
+  top: 10%;
+  right: 10%;
+  width: 10vw;
+  height: 10vw;
+  max-width: 120px;
+  max-height: 120px;
   background-color: #f9f3d9;
   border-radius: 50%;
   box-shadow: 0 0 40px rgba(249, 243, 217, 0.8);
   overflow: hidden;
-}
-
-.moon::before {
-  content: '';
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 15px;
-  height: 15px;
-  background-color: rgba(209, 203, 177, 0.4);
-  border-radius: 50%;
-}
-
-.moon::after {
-  content: '';
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  width: 25px;
-  height: 25px;
-  background-color: rgba(209, 203, 177, 0.3);
-  border-radius: 50%;
+  z-index: 2;
 }
 
 .stars {
@@ -599,6 +1020,7 @@ body {
   background-size: 550px 550px, 350px 350px, 250px 250px;
   background-position: 0 0, 40px 60px, 130px 270px;
   animation: twinkle 15s linear infinite;
+  z-index: 2;
 }
 
 @keyframes twinkle {
@@ -609,20 +1031,23 @@ body {
 
 .castle {
   position: absolute;
-  bottom: 50px;
-  width: 150px;
-  height: 200px;
+  bottom: 5%;
+  width: 15vw;
+  height: 20vh;
+  max-width: 180px;
+  max-height: 250px;
   background-color: #333;
+  z-index: 3;
 }
 
 .left-castle {
-  left: 40px;
+  left: 5%;
   clip-path: polygon(0 40%, 20% 40%, 20% 20%, 30% 20%, 30% 10%, 40% 0, 50% 10%, 50% 20%, 60% 20%, 60% 30%, 70% 30%, 70% 40%, 100% 40%, 100% 100%, 0 100%);
   background: linear-gradient(to right, #333 0%, #555 100%);
 }
 
 .right-castle {
-  right: 40px;
+  right: 5%;
   clip-path: polygon(0 40%, 30% 40%, 30% 30%, 40% 30%, 40% 20%, 50% 10%, 60% 0, 70% 10%, 70% 20%, 80% 20%, 80% 40%, 100% 40%, 100% 100%, 0 100%);
   background: linear-gradient(to right, #555 0%, #333 100%);
 }
@@ -632,389 +1057,480 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 5vh;
   background-color: #1a472a;
+  z-index: 3;
 }
 
-/* Karakterler ve canavar */
-.battle-characters {
+/* Geliştirilmiş saldırı animasyonu */
+.player-character.attacking {
+  animation: improvedAttackAnimation 1.2s ease-in-out;
+  z-index: 15;
+}
+
+@keyframes improvedAttackAnimation {
+  0% { transform: scale(1.5) translateX(0) translateY(0) rotate(0deg); filter: brightness(1); }
+  15% { transform: scale(1.6) translateX(30px) translateY(-25px) rotate(-3deg); filter: brightness(1.3); }
+  30% { transform: scale(1.7) translateX(50px) translateY(-15px) rotate(2deg); filter: brightness(1.6); }
+  45% { transform: scale(1.6) translateX(35px) translateY(-5px) rotate(-1deg); filter: brightness(1.4); }
+  60% { transform: scale(1.55) translateX(15px) translateY(-10px) rotate(0deg); filter: brightness(1.2); }
+  100% { transform: scale(1.5) translateX(0) translateY(0) rotate(0deg); filter: brightness(1); }
+}
+
+/* Cooldown süresi daha kısa ve görsele dayalı olsun */
+.player-character.cooldown {
+  cursor: wait;
+  opacity: 0.8;
+  filter: grayscale(30%);
+  animation: cooldownPulse 0.8s ease;
+}
+
+@keyframes cooldownPulse {
+  0% { transform: scale(1.5); filter: grayscale(0%); }
+  50% { transform: scale(1.4); filter: grayscale(50%); }
+  100% { transform: scale(1.5); filter: grayscale(30%); }
+}
+
+.dino-filigran-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1) contrast(1.1);
+  transform-origin: center center;
+  animation: dinoFiligranRotate 5s infinite alternate ease-in-out;
+  position: relative;
+  z-index: 11;
+}
+
+/* Dino iz efekti */
+.dino-trail {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 1;
-}
-
-/* Oyuncu tarafı */
-.player-side {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  padding: 20px;
-}
-
-.player-character {
-  position: absolute;
-  transition: all 0.5s ease;
-  cursor: pointer;
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.4));
-}
-
-.player-character:hover {
-  transform: translateY(-5px);
-}
-
-.player-character.attacking {
-  animation: attackAnimation 1.5s ease-in-out;
+  background: rgba(102, 180, 0, 0.25);
+  border-radius: 50%;
+  filter: blur(8px);
+  transform: scale(0.8);
+  opacity: 0.7;
+  animation: dinoTrailPulse 3s infinite;
   z-index: 10;
 }
 
-@keyframes attackAnimation {
-  0% { transform: translateX(0) translateY(0) rotate(0deg); }
-  20% { transform: translateX(30px) translateY(-20px) rotate(-5deg); }
-  50% { transform: translateX(180px) translateY(-10px) rotate(3deg); }
-  80% { transform: translateX(50px) translateY(5px) rotate(-2deg); }
-  100% { transform: translateX(0) translateY(0) rotate(0deg); }
-}
-
-.character-img {
-  width: 100px;
-  height: auto;
-  max-height: 120px;
-  object-fit: contain;
-  z-index: 2;
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
-  transition: all 0.3s ease;
-}
-
-.player-character:hover .character-img {
-  transform: scale(1.1);
-  filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.7)) brightness(1.1);
-}
-
-.character-broom {
+/* Dino aura efekti */
+.dino-aura {
   position: absolute;
-  width: 120px;
-  height: 8px;
-  background-color: #8B4513;
-  bottom: -15px;
-  left: -10px;
-  z-index: 1;
-  transform: rotate(-5deg);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.character-broom::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  right: -30px;
-  width: 50px;
-  height: 35px;
-  background-color: #D2B48C;
-  clip-path: polygon(0 0, 100% 30%, 100% 100%, 0% 100%);
-  transform: rotate(5deg);
-}
-
-.character-wand {
-  position: absolute;
-  top: 50%;
-  right: -15px;
-  width: 25px;
-  height: 4px;
-  background-color: #B8860B;
-  z-index: 3;
-  transform: rotate(0deg);
-}
-
-.character-wand::after {
-  content: '';
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 8px;
-  height: 8px;
+  top: -15px;
+  left: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
   border-radius: 50%;
-  background-color: #FFD700;
-  box-shadow: 0 0 12px #FFD700, 0 0 20px #FFD700;
-  animation: wandGlow 1.5s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(102, 204, 0, 0.3) 0%, rgba(102, 204, 0, 0) 70%);
+  animation: dinoAuraPulse 4s infinite;
+  z-index: 10;
 }
 
-@keyframes wandGlow {
+@keyframes dinoTrailPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.7); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+@keyframes dinoAuraPulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes dinoFiligranRotate {
   0% {
-    box-shadow: 0 0 8px #FFD700, 0 0 15px #FFD700;
+    transform: rotate(-5deg);
   }
   100% {
-    box-shadow: 0 0 12px #FFD700, 0 0 25px #FFD700;
+    transform: rotate(5deg);
   }
 }
 
-/* Düşman tarafı */
-.enemy-side {
-  position: relative;
+.player-side {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 50%;
-  height: 100%;
+  height: 80%;
+  z-index: 5;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player-character {
+  position: absolute;
+  width: 120px;
+  height: 150px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1.5);
+  z-index: 10;
+}
+
+.player-character .character-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.3));
+}
+
+.enemy-side {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 80%;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .enemy-character {
-  position: relative;
-  margin-right: 50px;
-  animation: enemyEntrance 1.5s ease-out;
-}
-
-.enemy-img {
+  position: absolute;
   width: 150px;
-  height: auto;
-  max-height: 180px;
+  height: 180px;
+  transform: scale(2);
+  z-index: 10;
+}
+
+.enemy-character .enemy-img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
-  animation: enemyFloat 6s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(255, 0, 0, 0.4));
 }
 
-@keyframes enemyFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(-2deg); }
-}
-
-/* Sağlık çubukları */
-.health-bars {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
+/* Cüzdan bağlantısı stilleri */
+.wallet-connect {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
   display: flex;
-  justify-content: space-between;
-  padding: 0 30px;
-  z-index: 2;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.player-health, .enemy-health {
-  width: 45%;
-}
-
-.health-label {
-  font-size: 14px;
-  margin-bottom: 5px;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px #000;
-}
-
-/* Savaş durumu mesajı */
-.battle-status {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 2;
-}
-
-.battle-status p {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
+.connect-wallet-btn {
+  background: linear-gradient(to right, #4a69bd, #1e3a8a);
+  color: white;
+  padding: 10px 16px;
+  border: none;
   border-radius: 20px;
-  display: inline-block;
-  font-size: 18px;
   font-weight: bold;
-  text-shadow: 1px 1px 2px #000;
-  animation: fadeIn 0.5s ease;
-  min-width: 300px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.connect-wallet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Oyun sonucu ekranı stillerini güncelle */
-.game-result {
+.connect-wallet-btn:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.wallet-info {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 50px 20px;
-  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 180px;
+}
+
+.wallet-address {
+  font-family: monospace;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.wallet-error {
+  color: #ff6666;
+  font-size: 12px;
+  text-align: center;
+  margin: 5px 0;
+  background-color: rgba(255, 0, 0, 0.2);
+  padding: 5px 10px;
+  border-radius: 5px;
+  max-width: 200px;
+}
+
+.switch-network-btn {
+  background: #ff9933;
+  color: #000;
+  font-size: 12px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.disconnect-wallet-btn {
+  background: #ff5555;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: all 0.2s ease;
+}
+
+.disconnect-wallet-btn:hover {
+  background: #ff3333;
+}
+
+/* Reward success message */
+.reward-success {
+  background-color: rgba(46, 125, 50, 0.9);
+  color: white;
+  padding: 20px;
   border-radius: 10px;
-  margin: 20px 0;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+  z-index: 1000;
+  max-width: 500px;
+  animation: fadeIn 0.5s;
+}
+
+.reward-error {
+  background-color: rgba(183, 28, 28, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(244, 67, 54, 0.3);
+  z-index: 1000;
+  max-width: 500px;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Karakter kartları için NFT bilgisi stili */
+.nft-info {
+  margin-top: 10px;
+  padding: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+.nft-address {
+  color: #bbbbff;
+  font-family: monospace;
+  margin-bottom: 5px;
+}
+
+/* Düşman Önizlemesi */
+.enemy-preview {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(60, 20, 60, 0.3);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 0, 0, 0.2);
+}
+
+.enemy-preview h3 {
+  color: #ff6666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.enemy-card {
+  width: 80%;
+  max-width: 300px;
+  padding: 15px;
+  background-color: rgba(40, 20, 40, 0.7);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.victory-title, .defeat-title {
-  font-size: 48px;
-  margin-bottom: 30px;
-  text-shadow: 0 0 10px;
-  letter-spacing: 5px;
+.enemy-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.4));
 }
 
-.victory-title {
-  color: #FFEB3B;
-  text-shadow: 0 0 10px #FFC107;
+.enemy-card h4 {
+  color: #ff4444;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-.defeat-title {
-  color: #FF5252;
-  text-shadow: 0 0 10px #F44336;
+.enemy-card p {
+  color: #dddddd;
+  margin-bottom: 15px;
+  font-style: italic;
 }
 
-.play-again-btn {
-  margin-top: 30px;
-  padding: 15px 40px;
-  font-size: 20px;
-  background: linear-gradient(to bottom, #4a69bd, #3f5fb9);
+/* Karakter seçim kartı boyutları (düşmanı da temiz gösterebilmek için) */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Reward connection button styles */
+.reward-connect {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.reward-connect p {
+  color: #f1f1f1;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.connect-reward-btn {
+  background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-.play-again-btn:hover {
-  background: linear-gradient(to bottom, #5c7cfa, #5d82f3);
-  transform: translateY(-2px);
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+.connect-reward-btn:hover {
+  background-color: #45a049;
 }
 
-/* Büyü efektleri */
-.magic-effect {
-  position: absolute;
-  top: 40%;
-  right: -5px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  z-index: 5;
-  animation: magicFly 1s linear forwards;
-  filter: blur(2px);
+.connect-reward-btn.secondary {
+  background-color: #607d8b;
 }
 
-@keyframes magicFly {
-  0% { 
-    transform: translateX(0) scale(1); 
+.connect-reward-btn.secondary:hover {
+  background-color: #546e7a;
+}
+
+.reward-processing {
+  background-color: rgba(25, 118, 210, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 500px;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
     opacity: 1;
   }
-  80% { 
-    transform: translateX(300px) scale(1.5); 
-    opacity: 0.8;
-  }
-  100% { 
-    transform: translateX(350px) scale(2); 
-    opacity: 0;
-  }
-}
-
-.magic-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.magic-particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  animation: particleTrail 0.8s linear infinite;
-  opacity: 0.8;
-  filter: blur(1px);
-}
-
-@keyframes particleTrail {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.8;
-  }
   100% {
-    transform: translate(-20px, 0);
-    opacity: 0;
+    opacity: 0.8;
   }
 }
 
-.player-character {
-  cursor: pointer;
-  transition: transform 0.3s ease;
+/* Ödül uyarı stili */
+.reward-warning {
+  border: 2px solid #ff9800;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
-.player-character:hover {
-  transform: scale(1.1);
+.reward-warning p {
+  margin-bottom: 12px;
+  color: #fff;
 }
 
-.player-character:active {
-  transform: scale(0.95);
+.owner-info {
+  background-color: rgba(10, 10, 25, 0.7);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0;
+  text-align: left;
+  font-family: monospace;
+  font-size: 14px;
+  overflow: auto;
+  max-height: 200px;
 }
 
-/* Geliştirme: Süpürge uçuş animasyonu */
-.player-character {
-  animation: hover 4s ease-in-out infinite;
+.owner-info p {
+  margin: 5px 0;
+  line-height: 1.4;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px;
 }
 
-@keyframes hover {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
 }
 
-.player-character:nth-child(2) {
-  animation-delay: 1s;
+.button-group button {
+  flex: 1;
+  max-width: 150px;
 }
 
-/* Cooldown durumu */
-.player-character.cooldown {
-  cursor: wait;
-  opacity: 0.8;
-  pointer-events: none;
+.reward-warning {
+  max-width: 500px !important;
 }
 
-/* Karakter bölgesi */
-.player-side {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  padding: 20px;
-}
 
-/* Düşman geldiğinde daha dramatik etki */
-@keyframes enemyEntrance {
-  0% { opacity: 0; transform: translateX(100px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-.enemy-character {
-  position: relative;
-  margin-right: 50px;
-  animation: enemyEntrance 1.5s ease-out;
-}
-
-/* Süpürge animasyonu */
-.player-character {
-  animation: hover 4s ease-in-out infinite;
-}
-
-@keyframes hover {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
-}
-
-.player-character:nth-child(2) {
-  animation-delay: 1s;
-}
-
-/* Karakterler ve canavar daha fazla efekt */
-.character-img, .enemy-img {
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
-  transition: all 0.3s ease;
-}
-
-.enemy-img {
-  animation: enemyFloat 6s ease-in-out infinite;
-}
-
-@keyframes enemyFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(-2deg); }
-}
