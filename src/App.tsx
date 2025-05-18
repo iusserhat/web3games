@@ -1,27 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import React from 'react'
 import WalletConnect from './components/WalletConnect'
 import GameRewards from './components/GameRewards'
-
-// Local Storage erişimi için güvenli bir yardımcı fonksiyon
-const safeLocalStorage = {
-  setItem: (key: string, value: string): void => {
-    try {
-      localStorage.setItem(key, value);
-    } catch (error) {
-      console.warn('localStorage erişim hatası:', error);
-    }
-  },
-  getItem: (key: string): string | null => {
-    try {
-      return localStorage.getItem(key);
-    } catch (error) {
-      console.warn('localStorage erişim hatası:', error);
-      return null;
-    }
-  }
-};
 
 // Assets'ten görselleri import et - Public klasöründen, Türkçe karaktersiz dosya adlarıyla yüklüyoruz
 const atesPng = '/ates.png'

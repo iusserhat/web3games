@@ -143,7 +143,7 @@ const GameRewards: React.FC<GameRewardsProps> = ({ isVictory, onRewardComplete }
       
       if (result.success) {
         setRewardStatus('success');
-        setMessage(`Tebrikler! ${accountInfo.rewardAmount} token cüzdanınıza gönderildi. İşlem hash: ${result.transaction.transactionHash.substring(0, 10)}...`);
+        setMessage(`Tebrikler! 100 token cüzdanınıza gönderildi. İşlem hash: ${result.transaction.transactionHash.substring(0, 10)}...`);
       } else {
         throw new Error(result.error);
       }
